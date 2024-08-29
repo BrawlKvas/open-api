@@ -1,0 +1,12 @@
+.wrap {
+    height: 100%;
+}
+
+.otp {
+    padding-top: 18vh;
+    pointer-events: none;
+}
+
+.otp input::selection {
+    background-color: transparent;
+}

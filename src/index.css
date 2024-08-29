@@ -1,0 +1,22 @@
+@import "@alfalab/core-components/vars/index.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-family-system);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+  padding: var(--gap-l) var(--gap-m);
+}
