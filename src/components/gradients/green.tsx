@@ -1,18 +1,22 @@
-export const GRADIENT_ID = "xGradient";
+import { FC } from "react";
 
-export const SuperEllipseShapeGradient = () => (
+export type GreenGradientProps = {
+  id: string;
+};
+
+export const GreenGradient: FC<GreenGradientProps> = ({ id }) => (
   <svg width="0" height="0" style={{ position: "absolute" }}>
     <defs>
       <linearGradient
-        id={GRADIENT_ID}
+        id={id}
         x1="100.5"
         y1="17.5"
         x2="-130.5"
         y2="88.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#BAF300" />
-        <stop offset="1" stop-color="#F4FFCE" />
+        <stop stopColor="#BAF300" />
+        <stop offset="1" stopColor="#F4FFCE" />
       </linearGradient>
     </defs>
   </svg>

@@ -7,11 +7,3 @@
 .btn {
     margin-top: auto;
 }
-
-.box {
-    background-color: #BAF300 !important;
-}
-
-.box > svg {
-    color: #030306E0;
-}

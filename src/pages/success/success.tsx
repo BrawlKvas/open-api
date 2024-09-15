@@ -5,7 +5,7 @@ import { SuperEllipse } from "@alfalab/core-components/icon-view/super-ellipse";
 import { Spinner } from "@alfalab/core-components/spinner";
 
 import styles from "./styles.module.css";
-import { SuperEllipseShapeGradient } from "./gradient";
+import { variantApp } from "../../theme";
 
 export const SuccessPage = () => {
   useEffect(() => {
@@ -35,7 +35,7 @@ export const SuccessPage = () => {
         </SystemMessageMobile.Controls>
       </SystemMessageMobile>
 
-      <SuperEllipseShapeGradient />
+      {variantApp.successPage.superEllipseShapeGradient}
     </>
   );
 };

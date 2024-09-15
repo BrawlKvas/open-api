@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
 import { ConsentPage, LoginPage, OtpPage, SuccessPage } from "./pages";
 
@@ -8,7 +8,7 @@ import { PATHS } from "./constants";
 
 import "./index.css";
 
-const router = createHashRouter([
+const router = createMemoryRouter([
   {
     path: PATHS.login,
     element: <LoginPage />,

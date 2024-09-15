@@ -1,0 +1,23 @@
+.plate {
+    padding: 12px;
+    display: flex;
+    background-color: #F2F3F5;
+    border-radius: 8px;
+}
+
+.plate > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.plate > svg {
+    margin-left: auto;
+}
+
+.box {
+    background-color: #2E6FFF !important;
+}
+
+.box > svg {
+    color: #fff;
+}
