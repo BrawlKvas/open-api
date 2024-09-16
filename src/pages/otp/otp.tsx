@@ -19,9 +19,10 @@ export const OtpPage = () => {
       const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
         window.HTMLInputElement.prototype,
         "value"
-      )!.set;
+      )!.set; 
 
       document.querySelectorAll("input").forEach((el) => {
+        el.inputMode = 'none';
         nativeInputValueSetter!.call(el, "0");
 
         const event = new Event("input", { bubbles: true });
