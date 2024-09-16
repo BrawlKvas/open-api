@@ -54,7 +54,6 @@ export const ConsentPage = () => {
       >
         Подписать
       </CustomButton>
-      <Gap size="m" />
     </div>
   );
 };
