@@ -1,36 +1,24 @@
-import {
-  ConfirmationMobile,
-  useConfirmation,
-} from "@alfalab/core-components/confirmation/mobile";
-
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../constants";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Typography } from "@alfalab/core-components/typography";
+import { Button } from "@alfalab/core-components/button";
+import { Gap } from "@alfalab/core-components/gap";
 
 export const OtpPage = () => {
   const navigate = useNavigate();
 
-  const { confirmationScreen, setConfirmationState, setConfirmationScreen } =
-    useConfirmation();
+  const [count, setCount] = useState(59);
 
   useEffect(() => {
-    setTimeout(() => {
-      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-        window.HTMLInputElement.prototype,
-        "value"
-      )!.set;
+    const id = setInterval(() => {
+      setCount((prev) => prev - 1);
+    }, 1000);
 
-      document.querySelectorAll("input").forEach((el) => {
-        nativeInputValueSetter!.call(el, "0");
-
-        const event = new Event("input", { bubbles: true });
-
-        el.dispatchEvent(event);
-      });
-
-      document.querySelectorAll("input")[5].blur();
-    }, 100);
+    return () => {
+      clearInterval(id);
+    };
   }, []);
 
   const handleContinue = () => {
@@ -39,18 +27,47 @@ export const OtpPage = () => {
 
   return (
     <div className={styles.wrap} onClick={handleContinue}>
-      <ConfirmationMobile
-        requiredCharAmount={6}
-        alignContent="center"
-        phone="+7 ··· ··· 12 34"
-        className={styles.otp}
-        screen={confirmationScreen}
-        state={"INITIAL"}
-        onChangeState={setConfirmationState}
-        onChangeScreen={setConfirmationScreen}
-        onInputFinished={() => {}}
-        onSmsRetryClick={() => {}}
-      />
+      <div className={styles.otp}>
+        <Typography.TitleMobile tag="h3" view="small" font="system">
+          Введите код из сообщения
+        </Typography.TitleMobile>
+        <Gap size={24} />
+        <Typography.Text view="primary-medium">
+          Код отправлен на +7 ··· ··· 12 34
+        </Typography.Text>
+        <Gap size={32} />
+        <div className={styles.code}>
+          {new Array(6).fill(0).map((_, i) => (
+            <Typography.Title
+              tag="div"
+              view="medium"
+              font="system"
+              className={styles.codeInput}
+              key={i}
+            >
+              0
+            </Typography.Title>
+          ))}
+        </div>
+        <Gap size={12} />
+        {count <= 0 ? (
+          <Button view="secondary" size="xs">
+            Запросить код повторно
+          </Button>
+        ) : (
+          <>
+            <Typography.Text view="primary-small" className={styles.countdown}>
+              Запросить повторно можно через 00:
+              {count >= 10 ? count : `0${count}`}
+            </Typography.Text>
+            <Gap size={20} />
+          </>
+        )}
+        <Gap size={12} />
+        <Typography.Text view="primary-small" weight="medium">
+          Не приходит сообщение?
+        </Typography.Text>
+      </div>
     </div>
   );
 };

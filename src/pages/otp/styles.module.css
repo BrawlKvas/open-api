@@ -3,10 +3,31 @@
 }
 
 .otp {
+    text-align: center;
     padding-top: 18vh;
     pointer-events: none;
 }
 
-.otp input::selection {
-    background-color: transparent;
+.code {
+    display: flex;
+    min-height: 80px;
+    justify-content: center;
+}
+
+.codeInput {
+    width: 36px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-color: #F2F3F5;
+}
+
+.codeInput:not(:last-child) {
+    margin-right: 8px;
+}
+
+.countdown {
+    color: rgba(4, 4, 19, 0.55);
 }
